@@ -15,6 +15,10 @@ run/main_scene="res://Levels/MAIN.tscn"
 config/features=PackedStringArray("4.2", "C#", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+Scene_Manager="*res://Code/Singleton/SceneManager.cs"
+
 [display]
 
 window/size/viewport_width=1920

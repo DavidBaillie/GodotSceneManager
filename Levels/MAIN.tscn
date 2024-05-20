@@ -1,4 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://crqmxpyap8f1p"]
+[gd_scene load_steps=7 format=3 uid="uid://crqmxpyap8f1p"]
+
+[ext_resource type="PackedScene" uid="uid://dxcg4uo13u4xl" path="res://Levels/DemoUI.tscn" id="1_ar48p"]
+[ext_resource type="Script" path="res://Code/Common/MAIN.cs" id="1_epyih"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_fw4jf"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -16,6 +19,7 @@ glow_enabled = true
 [sub_resource type="BoxMesh" id="BoxMesh_s557m"]
 
 [node name="Main" type="Node3D"]
+script = ExtResource("1_epyih")
 
 [node name="Rendering" type="Node3D" parent="."]
 
@@ -31,3 +35,5 @@ shadow_enabled = true
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4.34156)
 mesh = SubResource("BoxMesh_s557m")
+
+[node name="DemoUi" parent="." instance=ExtResource("1_ar48p")]

@@ -1,9 +1,25 @@
-[gd_resource type="Resource" script_class="SceneReferenceTag" load_steps=2 format=3 uid="uid://c04jmfa224iq2"]
+[gd_resource type="Resource" script_class="SceneReferenceTag" load_steps=3 format=3 uid="uid://c04jmfa224iq2"]
 
-[ext_resource type="Script" path="res://Code/Tags/SceneReferenceTag.cs" id="1_pynwa"]
+[ext_resource type="PackedScene" uid="uid://b545wmwm8i8p1" path="res://Levels/level_2.tscn" id="1_6i6tl"]
+
+[sub_resource type="CSharpScript" id="CSharpScript_fbrmy"]
+script/source = "using Godot;
+using System;
+
+[GlobalClass]
+public partial class SceneReferenceTag : Tag
+{
+    [Export(PropertyHint.File, \"*.tscn\")]
+    public string ScenePath { get; set; }
+    
+    [Export(PropertyHint.EnumSuggestion)]
+    public LoadOption AlwaysLoad { get; set; }
+}
+
+public enum LoadOption { Standard, AlwaysLoad, Persistent }"
 
 [resource]
-script = ExtResource("1_pynwa")
-ScenePath = "res://Levels/level_1.tscn"
-AlwaysLoad = 0
+script = SubResource("CSharpScript_fbrmy")
+ScenePath = ExtResource("1_6i6tl")
+SceneLoadType = 0
 Id = "37b29ddc-d071-456c-990d-6933fe5afc48"

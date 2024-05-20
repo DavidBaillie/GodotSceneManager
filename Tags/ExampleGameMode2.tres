@@ -1,10 +1,7 @@
-[gd_resource type="Resource" script_class="ExampleGameModeTag" load_steps=4 format=3 uid="uid://bx661dr5mcb42"]
+[gd_resource type="Resource" script_class="ExampleGameModeTag" load_steps=2 format=3 uid="uid://bx661dr5mcb42"]
 
-[ext_resource type="Resource" uid="uid://c04jmfa224iq2" path="res://Tags/Scene1.tres" id="1_6oj7y"]
 [ext_resource type="Script" path="res://Code/Tags/ExampleGameModeTag.cs" id="1_53p3a"]
-[ext_resource type="Resource" uid="uid://btrbxc30dfpn4" path="res://Tags/SceneUI.tres" id="2_ddqq7"]
 
 [resource]
 script = ExtResource("1_53p3a")
-Scenes = Array[Object]([ExtResource("1_6oj7y"), ExtResource("2_ddqq7")])
 Id = "9d1ba8aa-53e4-446e-9b10-5dde522edf03"
