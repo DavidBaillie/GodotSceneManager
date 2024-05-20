@@ -7,8 +7,12 @@
       "RelativeMoniker": "D:0:0:{3DC9790B-3E0F-4AD5-84F5-9C3A117FB6A7}|LevelChangeManager.csproj|solutionrelative:code\\singleton\\scenemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3DC9790B-3E0F-4AD5-84F5-9C3A117FB6A7}|LevelChangeManager.csproj|c:\\users\\leema\\documents\\github\\levelchangemanager\\code\\common\\main.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3DC9790B-3E0F-4AD5-84F5-9C3A117FB6A7}|LevelChangeManager.csproj|solutionrelative:code\\common\\main.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{3DC9790B-3E0F-4AD5-84F5-9C3A117FB6A7}|LevelChangeManager.csproj|c:\\users\\leema\\documents\\github\\levelchangemanager\\code\\tags\\scenecollectiontag.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3DC9790B-3E0F-4AD5-84F5-9C3A117FB6A7}|LevelChangeManager.csproj|solutionrelative:code\\tags\\scenecollectiontag.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3DC9790B-3E0F-4AD5-84F5-9C3A117FB6A7}|LevelChangeManager.csproj|c:\\users\\leema\\documents\\github\\levelchangemanager\\code\\tags\\examplegamemodetag.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3DC9790B-3E0F-4AD5-84F5-9C3A117FB6A7}|LevelChangeManager.csproj|solutionrelative:code\\tags\\examplegamemodetag.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{3DC9790B-3E0F-4AD5-84F5-9C3A117FB6A7}|LevelChangeManager.csproj|c:\\users\\leema\\documents\\github\\levelchangemanager\\code\\tags\\gamemodetag.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -19,8 +23,12 @@
       "RelativeMoniker": "D:0:0:{3DC9790B-3E0F-4AD5-84F5-9C3A117FB6A7}|LevelChangeManager.csproj|solutionrelative:code\\tags\\tag.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3DC9790B-3E0F-4AD5-84F5-9C3A117FB6A7}|LevelChangeManager.csproj|c:\\users\\leema\\documents\\github\\levelchangemanager\\code\\tags\\examplegamemodetag.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3DC9790B-3E0F-4AD5-84F5-9C3A117FB6A7}|LevelChangeManager.csproj|solutionrelative:code\\tags\\examplegamemodetag.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{3DC9790B-3E0F-4AD5-84F5-9C3A117FB6A7}|LevelChangeManager.csproj|c:\\users\\leema\\documents\\github\\levelchangemanager\\code\\utilities\\nodeutilities.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3DC9790B-3E0F-4AD5-84F5-9C3A117FB6A7}|LevelChangeManager.csproj|solutionrelative:code\\utilities\\nodeutilities.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3DC9790B-3E0F-4AD5-84F5-9C3A117FB6A7}|LevelChangeManager.csproj|c:\\users\\leema\\documents\\github\\levelchangemanager\\code\\common\\main.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3DC9790B-3E0F-4AD5-84F5-9C3A117FB6A7}|LevelChangeManager.csproj|solutionrelative:code\\common\\main.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -30,11 +38,37 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "SceneCollectionTag.cs",
+              "DocumentMoniker": "C:\\Users\\leema\\Documents\\GitHub\\LevelChangeManager\\Code\\Tags\\SceneCollectionTag.cs",
+              "RelativeDocumentMoniker": "Code\\Tags\\SceneCollectionTag.cs",
+              "ToolTip": "C:\\Users\\leema\\Documents\\GitHub\\LevelChangeManager\\Code\\Tags\\SceneCollectionTag.cs",
+              "RelativeToolTip": "Code\\Tags\\SceneCollectionTag.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAAxAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-20T15:52:43.641Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "NodeUtilities.cs",
+              "DocumentMoniker": "C:\\Users\\leema\\Documents\\GitHub\\LevelChangeManager\\Code\\Utilities\\NodeUtilities.cs",
+              "RelativeDocumentMoniker": "Code\\Utilities\\NodeUtilities.cs",
+              "ToolTip": "C:\\Users\\leema\\Documents\\GitHub\\LevelChangeManager\\Code\\Utilities\\NodeUtilities.cs",
+              "RelativeToolTip": "Code\\Utilities\\NodeUtilities.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAAfAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-20T15:39:38.472Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -44,27 +78,27 @@
               "RelativeDocumentMoniker": "Code\\Singleton\\SceneManager.cs",
               "ToolTip": "C:\\Users\\leema\\Documents\\GitHub\\LevelChangeManager\\Code\\Singleton\\SceneManager.cs",
               "RelativeToolTip": "Code\\Singleton\\SceneManager.cs",
-              "ViewState": "AQIAABEAAAAAAAAAAAAwwCkAAAAmAAAA",
+              "ViewState": "AQIAAAYAAAAAAAAAAAA5wBkAAAAJAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-05-19T18:43:42.729Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 6,
               "Title": "MAIN.cs",
               "DocumentMoniker": "C:\\Users\\leema\\Documents\\GitHub\\LevelChangeManager\\Code\\Common\\MAIN.cs",
               "RelativeDocumentMoniker": "Code\\Common\\MAIN.cs",
               "ToolTip": "C:\\Users\\leema\\Documents\\GitHub\\LevelChangeManager\\Code\\Common\\MAIN.cs",
               "RelativeToolTip": "Code\\Common\\MAIN.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAA4AAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABYAAABCAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-05-19T17:05:38.538Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "GameModeTag.cs",
               "DocumentMoniker": "C:\\Users\\leema\\Documents\\GitHub\\LevelChangeManager\\Code\\Tags\\GameModeTag.cs",
               "RelativeDocumentMoniker": "Code\\Tags\\GameModeTag.cs",
@@ -77,7 +111,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 2,
               "Title": "ExampleGameModeTag.cs",
               "DocumentMoniker": "C:\\Users\\leema\\Documents\\GitHub\\LevelChangeManager\\Code\\Tags\\ExampleGameModeTag.cs",
               "RelativeDocumentMoniker": "Code\\Tags\\ExampleGameModeTag.cs",
@@ -90,13 +124,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "Tag.cs",
               "DocumentMoniker": "C:\\Users\\leema\\Documents\\GitHub\\LevelChangeManager\\Code\\Tags\\Tag.cs",
               "RelativeDocumentMoniker": "Code\\Tags\\Tag.cs",
               "ToolTip": "C:\\Users\\leema\\Documents\\GitHub\\LevelChangeManager\\Code\\Tags\\Tag.cs",
               "RelativeToolTip": "Code\\Tags\\Tag.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAqwAcAAAA/AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-05-18T23:17:54.593Z",
               "EditorCaption": ""
