@@ -1,5 +1,6 @@
 using Godot;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 [GlobalClass]
@@ -112,9 +113,21 @@ public partial class SceneManager : Node
     /// Given a collection, determines what nodes need to be unloaded and what nodes are 'unknown'
     /// </summary>
     /// <param name="collection">Collection being loaded</param>
-    private (List<Node> toUnload, List<Node> toMove, List<Node> unknown) GenerateActionsForExistingScenes(SceneCollectionTag collection)
+    private (List<Node> toMove, List<Node> unknown) GenerateActionsForExistingScenes(SceneCollectionTag collection)
     {
-        return default;
+        var unknownNodes = GetTree().Root.GetChildren().Where(x => NodeUtilities.IsSceneNode(x) || NodeUtilities.IsUiNode(x)).ToList();
+        var toMoveNodes = new List<Node>();
+
+        if (CurrentBaseNode != null && !collection.ReloadAlreadyExistingNodes)
+        {
+            foreach (var node in CurrentBaseNode.GetChildren().Where(x => NodeUtilities.IsSceneNode(x) || NodeUtilities.IsUiNode(x)))
+            {
+                if (!string.IsNullOrEmpty(node.SceneFilePath) && collection.Scenes.Any(x => x.ResourcePath == node.SceneFilePath))
+                    toMoveNodes.Add(node);
+            }
+        }
+
+        return (toMoveNodes, unknownNodes);
     }
 
     /// <summary>
@@ -123,7 +136,13 @@ public partial class SceneManager : Node
     /// <param name="collection">Collection being loaded</param>
     private List<PackedScene> GenerateActionsForNewCollectionScenes(SceneCollectionTag collection)
     {
-        return default;
+        if (CurrentBaseNode is null || collection.ReloadAlreadyExistingNodes)
+            return collection.Scenes.ToList();
+
+        var currentNodes = CurrentBaseNode.GetChildren()
+            .Where(x => NodeUtilities.IsSceneNode(x) || NodeUtilities.IsUiNode(x) && !string.IsNullOrEmpty(x.SceneFilePath));
+
+        return collection.Scenes.Where(inboundScene => !currentNodes.Any(curr => curr.SceneFilePath == inboundScene.ResourcePath)).ToList();
     }
 
     private struct SceneActionCollection
