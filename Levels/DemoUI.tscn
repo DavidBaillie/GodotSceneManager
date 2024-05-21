@@ -1,4 +1,24 @@
-[gd_scene format=3 uid="uid://dxcg4uo13u4xl"]
+[gd_scene load_steps=3 format=3 uid="uid://dxcg4uo13u4xl"]
+
+[ext_resource type="Script" path="res://Code/Common/ChangeSceneButton.cs" id="1_hv2p6"]
+
+[sub_resource type="CSharpScript" id="CSharpScript_q7j4m"]
+script/source = "using Godot;
+using System;
+
+public partial class DemoUI : Control
+{
+	// Called when the node enters the scene tree for the first time.
+	public override void _Ready()
+	{
+	}
+
+	// Called every frame. 'delta' is the elapsed time since the previous frame.
+	public override void _Process(double delta)
+	{
+	}
+}
+"
 
 [node name="DemoUi" type="Control"]
 layout_mode = 3
@@ -7,19 +27,24 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = SubResource("CSharpScript_q7j4m")
 
-[node name="Button" type="Button" parent="."]
+[node name="ChangeSceneButton" type="Button" parent="."]
 layout_mode = 0
-offset_left = 29.0
-offset_top = 48.0
-offset_right = 382.0
+offset_left = 28.0
+offset_top = 49.0
+offset_right = 381.0
 offset_bottom = 113.0
-text = "Collection 1"
+text = "Col 1"
+script = ExtResource("1_hv2p6")
+CollectionPath = "res://Tags/SceneCollection1.tres"
 
-[node name="Button2" type="Button" parent="."]
+[node name="ChangeSceneButton2" type="Button" parent="."]
 layout_mode = 0
-offset_left = 625.0
-offset_top = 48.0
-offset_right = 978.0
+offset_left = 459.0
+offset_top = 49.0
+offset_right = 812.0
 offset_bottom = 113.0
-text = "Collection 2"
+text = "Col 2"
+script = ExtResource("1_hv2p6")
+CollectionPath = "res://Tags/SceneCollection2.tres"

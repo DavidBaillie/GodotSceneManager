@@ -1,8 +1,0 @@
-[gd_resource type="Resource" script_class="SceneReferenceTag" load_steps=2 format=3 uid="uid://lo25ck2waruu"]
-
-[ext_resource type="Script" path="res://Code/Tags/SceneReferenceTag.cs" id="1_3byth"]
-
-[resource]
-script = ExtResource("1_3byth")
-ScenePath = "res://Levels/level_2.tscn"
-Id = "dbfadb0e-850d-4873-858f-2f8ec414680d"

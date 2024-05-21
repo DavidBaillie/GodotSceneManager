@@ -1,4 +1,5 @@
 using Godot;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -19,7 +20,7 @@ public partial class SceneManager : Node
     /// Loads the provided game mode and scenes for the mode
     /// </summary>
     /// <param name="gameMode">Gamemode to load</param>
-    public void LoadGameMode(SceneCollectionTag collection, bool freeUntrackedScenes = true) 
+    public void LoadSceneCollection(SceneCollectionTag collection, bool freeUntrackedScenes = true) 
     {
         if (collection == null)
         {
@@ -37,58 +38,54 @@ public partial class SceneManager : Node
     }
     private void LoadSceneCollection_Deferred(SceneCollectionTag collection, bool freeUntrackedScenes = true)
     {
-        Task.Run(async () =>
+        var root = GetTree().Root.GetChildren().ToList();
+
+        //Spin up the loading screen
+        var loadingScreen = collection.LoadingScreenOverride ?? DefaultLoadingScreen;
+        var loadingScreenNode = ResourceLoader.Load<PackedScene>(loadingScreen.ResourcePath).Instantiate<Node>();
+        GetTree().Root.AddChild(loadingScreenNode);
+
+        //End previous game mode and decide what we're doing
+        CurrentCollection?.GameMode?.Cleanup(CurrentBaseNode);
+        var nodeActions = GenerateSceneActions(collection);
+
+        //Create new node to hold everything
+        Node newNode = new Node();
+        newNode.Name = string.IsNullOrWhiteSpace(collection.EditorDisplayName) ? collection.ResourceName : collection.EditorDisplayName;
+        GetTree().Root.AddChild(newNode);
+
+        //Tranfer nodes we're keeping
+        foreach (var node in nodeActions.NodesToTransfer)
         {
-            //Spin up the loading screen
-            var loadingScreen = collection.LoadingScreenOverride ?? DefaultLoadingScreen;
-            var loadingScreenNode = ResourceLoader.Load<PackedScene>(loadingScreen.ResourcePath).Instantiate<Node>();
-            GetTree().Root.AddChild(loadingScreenNode);
+            node.GetParent().RemoveChild(node);
+            newNode.AddChild(node);
+        }
 
-            await Task.Delay(1);
+        //Kill the old node holding children
+        if (CurrentBaseNode is not null)
+            CurrentBaseNode.QueueFree();
 
-            //End previous game mode and decide what we're doing
-            CurrentCollection?.GameMode?.Cleanup(CurrentBaseNode);
-            var nodeActions = GenerateSceneActions(collection);
+        //Kill untracked nodes
+        foreach (var node in nodeActions.UntrackedNodes)
+        {
+            node.QueueFree();
+        }
 
-            await Task.Delay(1);
+        //Load the new nodes
+        CurrentBaseNode = newNode;
+        foreach (var scene in nodeActions.ScenesToLoad)
+        {
+            var path = scene.ResourcePath;
+            var loaded = GD.Load<PackedScene>(path);
+            var instance = loaded.Instantiate();
 
-            //Create new node to hold everything
-            Node newNode = new Node();
-            newNode.Name = string.IsNullOrWhiteSpace(collection.EditorDisplayName) ? collection.ResourceName : collection.EditorDisplayName;
+            CurrentBaseNode.AddChild(instance);
+        }
 
-            //Tranfer nodes we're keeping
-            foreach (var node in nodeActions.NodesToTransfer)
-            {
-                node.GetParent().RemoveChild(node);
-                newNode.AddChild(node);
-            }
-
-            //Kill the old node holding children
-            if (CurrentBaseNode is not null)
-                CurrentBaseNode.QueueFree();
-
-            //Kill untracked nodes
-            foreach (var node in nodeActions.UntrackedNodes)
-            {
-                node.QueueFree();
-            }
-
-            await Task.Delay(1);
-
-            //Load the new nodes
-            CurrentBaseNode = newNode;
-            foreach(var node in nodeActions.ScenesToLoad)
-            {
-                CurrentBaseNode.AddChild(GD.Load<PackedScene>(node.ResourcePath).Instantiate());
-            }
-
-            await Task.Delay(1);
-
-            //Start new mode and remove loading screen
-            CurrentCollection = collection;
-            collection.GameMode?.Setup(CurrentBaseNode);
-            loadingScreenNode.QueueFree();
-        });
+        //Start new mode and remove loading screen
+        CurrentCollection = collection;
+        collection.GameMode?.Setup(CurrentBaseNode);
+        loadingScreenNode.QueueFree();
     }
 
     /// <summary>
@@ -115,7 +112,9 @@ public partial class SceneManager : Node
     /// <param name="collection">Collection being loaded</param>
     private (List<Node> toMove, List<Node> unknown) GenerateActionsForExistingScenes(SceneCollectionTag collection)
     {
-        var unknownNodes = GetTree().Root.GetChildren().Where(x => NodeUtilities.IsSceneNode(x) || NodeUtilities.IsUiNode(x)).ToList();
+        var pretty = GetTreeStringPretty();
+        var rootNodes = GetTree().Root.GetChildren().ToList();
+        var unknownNodes = rootNodes.Where(x => NodeUtilities.IsSceneNode(x) || NodeUtilities.IsUiNode(x)).ToList();
         var toMoveNodes = new List<Node>();
 
         if (CurrentBaseNode != null && !collection.ReloadAlreadyExistingNodes)

@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="SceneCollectionTag" load_steps=5 format=3 uid="uid://gx1eabg0fx3a"]
+
+[ext_resource type="Script" path="res://Code/Tags/SceneCollectionTag.cs" id="1_dqibx"]
+[ext_resource type="Resource" uid="uid://bx661dr5mcb42" path="res://Tags/ExampleGameMode2.tres" id="1_hq6l4"]
+[ext_resource type="PackedScene" uid="uid://b545wmwm8i8p1" path="res://Levels/level_2.tscn" id="2_30131"]
+[ext_resource type="PackedScene" uid="uid://dxcg4uo13u4xl" path="res://Levels/DemoUI.tscn" id="3_dtiah"]
+
+[resource]
+script = ExtResource("1_dqibx")
+EditorDisplayName = "Col2"
+ReloadAlreadyExistingNodes = false
+GameMode = ExtResource("1_hq6l4")
+Scenes = [ExtResource("2_30131"), ExtResource("3_dtiah")]
+Id = "d55d8533-e928-43bf-8677-7f862821e43d"
