@@ -17,7 +17,7 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-Scene_Manager="*res://Code/Singleton/SceneManager.cs"
+SceneManagerNode="*res://SingletonNodes/SceneManagerNode.tscn"
 
 [display]
 

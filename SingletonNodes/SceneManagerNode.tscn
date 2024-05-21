@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://b6jysyuvr1in3"]
+
+[ext_resource type="Script" path="res://Code/Singleton/SceneManager.cs" id="1_rp2o4"]
+[ext_resource type="PackedScene" uid="uid://d1kp53gn0hb82" path="res://Levels/LoadingScreen.tscn" id="2_h6iuk"]
+
+[node name="SceneManagerNode" type="Node"]
+script = ExtResource("1_rp2o4")
+DefaultLoadingScreen = ExtResource("2_h6iuk")

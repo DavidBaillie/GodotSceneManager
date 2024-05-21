@@ -1,9 +1,15 @@
 using Godot;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 [GlobalClass]
 public partial class SceneManager : Node
 {
+    public const string SingletonPath = "/root/Scene_Manager";
+
+    [Export]
+    public PackedScene DefaultLoadingScreen { get; set; }
+
     public SceneCollectionTag CurrentCollection { get; set; } = null;
     public Node CurrentBaseNode { get; set; } = null;
 
@@ -30,24 +36,58 @@ public partial class SceneManager : Node
     }
     private void LoadSceneCollection_Deferred(SceneCollectionTag collection, bool freeUntrackedScenes = true)
     {
-        // TODO - add loading screen
-
-        if (CurrentCollection?.GameMode != null )
+        Task.Run(async () =>
         {
-            CurrentCollection.GameMode.Cleanup(CurrentBaseNode);
-        }
+            //Spin up the loading screen
+            var loadingScreen = collection.LoadingScreenOverride ?? DefaultLoadingScreen;
+            var loadingScreenNode = ResourceLoader.Load<PackedScene>(loadingScreen.ResourcePath).Instantiate<Node>();
+            GetTree().Root.AddChild(loadingScreenNode);
 
-        var nodeActions = GenerateSceneActions(collection);
+            await Task.Delay(1);
 
+            //End previous game mode and decide what we're doing
+            CurrentCollection?.GameMode?.Cleanup(CurrentBaseNode);
+            var nodeActions = GenerateSceneActions(collection);
 
+            await Task.Delay(1);
 
-        // TODO - unload actions
+            //Create new node to hold everything
+            Node newNode = new Node();
+            newNode.Name = string.IsNullOrWhiteSpace(collection.EditorDisplayName) ? collection.ResourceName : collection.EditorDisplayName;
 
-        // TODO - load actions
+            //Tranfer nodes we're keeping
+            foreach (var node in nodeActions.NodesToTransfer)
+            {
+                node.GetParent().RemoveChild(node);
+                newNode.AddChild(node);
+            }
 
-        // TODO - start new gamemode
+            //Kill the old node holding children
+            if (CurrentBaseNode is not null)
+                CurrentBaseNode.QueueFree();
 
-        // TODO - remove loading screen
+            //Kill untracked nodes
+            foreach (var node in nodeActions.UntrackedNodes)
+            {
+                node.QueueFree();
+            }
+
+            await Task.Delay(1);
+
+            //Load the new nodes
+            CurrentBaseNode = newNode;
+            foreach(var node in nodeActions.ScenesToLoad)
+            {
+                CurrentBaseNode.AddChild(GD.Load<PackedScene>(node.ResourcePath).Instantiate());
+            }
+
+            await Task.Delay(1);
+
+            //Start new mode and remove loading screen
+            CurrentCollection = collection;
+            collection.GameMode?.Setup(CurrentBaseNode);
+            loadingScreenNode.QueueFree();
+        });
     }
 
     /// <summary>
@@ -64,7 +104,6 @@ public partial class SceneManager : Node
         {
             ScenesToLoad = newActions,
             NodesToTransfer = existingActions.toMove,
-            NodesToUnload = existingActions.toUnload,
             UntrackedNodes = existingActions.unknown
         };
     }
@@ -91,7 +130,6 @@ public partial class SceneManager : Node
     {
         public List<PackedScene> ScenesToLoad { get; set; }
         public List<Node> NodesToTransfer { get; set; }
-        public List<Node> NodesToUnload { get; set; }
         public List<Node> UntrackedNodes { get; set; }
     }
 }
