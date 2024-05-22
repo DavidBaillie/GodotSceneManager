@@ -3,6 +3,10 @@
   "WorkspaceRootPath": "C:\\Users\\leema\\Documents\\GitHub\\LevelChangeManager\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{3DC9790B-3E0F-4AD5-84F5-9C3A117FB6A7}|LevelChangeManager.csproj|c:\\users\\leema\\documents\\github\\levelchangemanager\\code\\common\\main.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3DC9790B-3E0F-4AD5-84F5-9C3A117FB6A7}|LevelChangeManager.csproj|solutionrelative:code\\common\\main.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{3DC9790B-3E0F-4AD5-84F5-9C3A117FB6A7}|LevelChangeManager.csproj|c:\\users\\leema\\documents\\github\\levelchangemanager\\code\\singleton\\scenemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{3DC9790B-3E0F-4AD5-84F5-9C3A117FB6A7}|LevelChangeManager.csproj|solutionrelative:code\\singleton\\scenemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -18,7 +22,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Bookmark",
@@ -26,7 +30,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
+              "Title": "MAIN.cs",
+              "DocumentMoniker": "C:\\Users\\leema\\Documents\\GitHub\\LevelChangeManager\\Code\\Common\\MAIN.cs",
+              "RelativeDocumentMoniker": "Code\\Common\\MAIN.cs",
+              "ToolTip": "C:\\Users\\leema\\Documents\\GitHub\\LevelChangeManager\\Code\\Common\\MAIN.cs",
+              "RelativeToolTip": "Code\\Common\\MAIN.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABwAAAAHAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-22T00:22:51.842Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "ChangeSceneButton.cs",
               "DocumentMoniker": "C:\\Users\\leema\\Documents\\GitHub\\LevelChangeManager\\Code\\Common\\ChangeSceneButton.cs",
               "RelativeDocumentMoniker": "Code\\Common\\ChangeSceneButton.cs",
@@ -39,13 +56,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "SceneManager.cs",
               "DocumentMoniker": "C:\\Users\\leema\\Documents\\GitHub\\LevelChangeManager\\Code\\Singleton\\SceneManager.cs",
               "RelativeDocumentMoniker": "Code\\Singleton\\SceneManager.cs",
               "ToolTip": "C:\\Users\\leema\\Documents\\GitHub\\LevelChangeManager\\Code\\Singleton\\SceneManager.cs",
               "RelativeToolTip": "Code\\Singleton\\SceneManager.cs",
-              "ViewState": "AQIAACMAAAAAAAAAAAAuwFQAAAAIAAAA",
+              "ViewState": "AQIAAHgAAAAAAAAAAAAowIkAAAAIAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-05-20T18:14:27.525Z",
               "EditorCaption": ""

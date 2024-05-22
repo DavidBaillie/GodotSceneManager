@@ -1,41 +1,28 @@
-[gd_scene load_steps=8 format=3 uid="uid://crqmxpyap8f1p"]
+[gd_scene load_steps=7 format=3 uid="uid://crqmxpyap8f1p"]
 
 [ext_resource type="PackedScene" uid="uid://dxcg4uo13u4xl" path="res://Levels/DemoUI.tscn" id="1_ar48p"]
 [ext_resource type="Script" path="res://Code/Common/MAIN.cs" id="1_epyih"]
 [ext_resource type="PackedScene" uid="uid://cqvew7v1kxesc" path="res://Levels/level_1.tscn" id="2_eb4fo"]
-
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_fw4jf"]
-sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
-ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
-
-[sub_resource type="Sky" id="Sky_rwxq7"]
-sky_material = SubResource("ProceduralSkyMaterial_fw4jf")
-
-[sub_resource type="Environment" id="Environment_wybso"]
-background_mode = 2
-sky = SubResource("Sky_rwxq7")
-tonemap_mode = 2
-glow_enabled = true
+[ext_resource type="PackedScene" uid="uid://dfwkiafv3u0xw" path="res://Levels/Rendering.tscn" id="3_2osja"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_s557m"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_vcsbn"]
 
 [node name="Main" type="Node3D"]
 script = ExtResource("1_epyih")
 TScene = ExtResource("2_eb4fo")
 
-[node name="Rendering" type="Node3D" parent="."]
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="Rendering"]
-environment = SubResource("Environment_wybso")
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Rendering"]
-transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
-shadow_enabled = true
-
-[node name="Camera3D" type="Camera3D" parent="Rendering"]
+[node name="Rendering" parent="." instance=ExtResource("3_2osja")]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4.34156)
 mesh = SubResource("BoxMesh_s557m")
 
 [node name="DemoUi" parent="." instance=ExtResource("1_ar48p")]
+
+[node name="Node" type="Node" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Node"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3.18208)
+mesh = SubResource("CylinderMesh_vcsbn")
